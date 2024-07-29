@@ -1,4 +1,4 @@
-# Pretrip
+# PreTrip
 2024-07-26 ~ 2024-07-30 runnerton <Pre-Trip>
 
 ## 소개
