@@ -1,3 +1,3 @@
 # Pretrip
 
-미들웨어랑 locationRoutes 제외하고 나머지 기능 + 에러 해결 완료한 ver
+리뷰 수정 제외하고 백엔드 기능 완료한 ver
