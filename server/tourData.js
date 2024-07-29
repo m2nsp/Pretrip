@@ -2,46 +2,53 @@ import axios from "axios";
 import { PrismaClient } from "@prisma/client";
 import dotenv from "dotenv";
 
-dotenv.config();
-
 const prisma = new PrismaClient();
+dotenv.config();
 
 async function fetchTourData() {
     const serviceKey = process.env.TOUR_API_KEY;
     const numOfRows = 10;
     const pageNo = 1;
-    const url = `http://apis.data.go.kr/B551011/KorService1/areaCode1?serviceKey=${serviceKey}&numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=ETC&MobileApp=TestApp&_type=json`;
-
+    const mobileOS = 'WIN';
+    const mobileApp = 'PreTrip';
+    const _type = 'json';
+    const areaCode = '31'; // 강원 
+    const url = `http://apis.data.go.kr/B551011/KorService1/areaBasedList1?serviceKey=${serviceKey}&numOfRows=${numOfRows}&pageNo=${pageNo}&MobileOS=${mobileOS}&MobileApp=${mobileApp}&_type=${_type}&areaCode=${areaCode}`;
+    
     try {
-        const res = await axios.get(url);
-        console.log("API Response: ", res.data); // 응답 전체를 출력
+        const response = await axios.get(url);
+        const responseData = response.data;
 
-        // 응답 구조에 따라 수정
-        const data = res.data.response?.body?.items?.item;
+        console.log("전체 API 응답:", responseData); // 전체 응답 데이터 로깅
 
-        if (!data) {
-            console.log("No data found in API response");
-            return;
-        }
+        if (responseData && responseData.response && responseData.response.body && responseData.response.body.items) {
+            const data = responseData.response.body.items.item;
 
-        for (const item of data) {
-            const locationData = {
-                id: item.contentid,
-                name: item.title,
-                category: item.cat1,
-                region: item.addr1,
-                longitude: parseFloat(item.mapx),
-                latitude: parseFloat(item.mapy),
-                averageRating: 0
-            };
+            if (data && Array.isArray(data)) {
+                for (const item of data) {
+                    const locationData = {
+                        id: item.contentid,
+                        name: item.title,
+                        category: item.cat1,
+                        region: item.addr1,
+                        longitude: parseFloat(item.mapx),
+                        latitude: parseFloat(item.mapy),
+                        averageRating: 0
+                    };
 
-            await prisma.location.create({
-                data: locationData
-            });
-            console.log(`Location ${item.title} saved`);
+                    await prisma.location.create({
+                        data: locationData
+                    });
+                    console.log(`위치 ${item.title} 저장 완료`);
+                }
+            } else {
+                console.log("아이템이 없거나 아이템이 배열이 아닙니다.");
+            }
+        } else {
+            console.log("예상치 못한 API 응답 구조:", responseData);
         }
     } catch (error) {
-        console.log("error: ", error.response?.data || error.message); // 에러 메시지 출력
+        console.error("투어 데이터 가져오기 오류:", error);
     }
 }
 
