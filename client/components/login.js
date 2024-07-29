@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     if (userName) {
       // ID를 쿼리 문자열로 전달
-      var url = '../bookmark/bookmark.html?userName=' + encodeURIComponent(userName);
+      var url = 'bookmark.html?userName=' + encodeURIComponent(userName);
       window.location.href = url;
     } else {
       alert('ID를 입력하세요.');
@@ -28,6 +28,9 @@ document.addEventListener("DOMContentLoaded", function() {
     console.log('Email:', email);
     console.log('Password:', password);
   });
+
+
+  
 
   var menuItems = document.querySelectorAll('.menu-item');
 

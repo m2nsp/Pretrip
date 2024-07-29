@@ -69,7 +69,22 @@ const places = [
     address: "제주 서귀포시 안덕면 화순리",
     link: "https://place.map.kakao.com/26972307",
     rating: 3
+  },
+  {
+    name: "한림 공원",
+    imageUrl: "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.kakaocdn.net%2Fmystore%2FDDB8938CBE7E423F8DA37717CEFE2BF2",
+    address: "제주 특별자치도 제주시 한림읍",
+    link: "https://place.map.kakao.com/10941032",
+    rating: 3
+  },
+  {
+    name: "산방산",
+    imageUrl: "https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Fplace%2F3CE01C8836A748D89F07D6B532102242",
+    address: "제주특별자치도 서귀포시 안덕면",
+    link: "https://place.map.kakao.com/8386141",
+    rating: 3
   }
+
 ];
 
 // 장소 미리보기 
