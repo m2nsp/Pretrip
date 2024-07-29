@@ -1,9 +1,7 @@
-/*
+import { define, assert } from 'superstruct';
 
-import { struct, assert } from 'superstruct';
-
-// 리뷰 스키마 
-const ReviewStruct = struct({
+// 리뷰 스키마 정의
+const ReviewStruct = define({
   id: 'string', // VARCHAR(191)
   location_id: 'string', // VARCHAR(191)
   user_name: 'string', // VARCHAR(191)
@@ -12,43 +10,29 @@ const ReviewStruct = struct({
   created_at: 'string?', // TIMESTAMP (optional for validation)
 });
 
-// 리뷰 validate
+// 리뷰 검증
 const validateReview = (data) => {
   try {
-    ReviewStruct(data);
+    assert(data, ReviewStruct);
 
     if (data.rating < 1 || data.rating > 5) {
       throw new Error('평점은 1과 5 사이의 정수여야 합니다.');
     }
-    
-    // if (userId !== undefined) {
-    //     if (typeof userId !== 'string') {
-    //       throw new Error('User가 존재하지 않습니다.');
-    //     }
-    //   }
   } catch (error) {
     throw new Error(error.message);
   }
 };
 
 const validateReviewUpdate = (data) => {
-    const { rating, userId } = data;
-  
-    if (rating !== undefined) {
-      if (typeof rating !== 'number' || rating < 1 || rating > 5) {
-        throw new Error('평점은 1과 5 사이의 정수여야 합니다.');
-      }
-    }
-  
-    // if (userId !== undefined) {
-    //   if (typeof userId !== 'string') {
-    //     throw new Error('User가 존재하지 않습니다.');
-    //   }
-    // }
-  };
+  const { rating, userId } = data;
 
-module.exports = {
-  validateReview, validateReviewUpdate
+  if (rating !== undefined) {
+    if (typeof rating !== 'number' || rating < 1 || rating > 5) {
+      throw new Error('평점은 1과 5 사이의 정수여야 합니다.');
+    }
+  }
+
+  // userId 검증을 추가하고 싶다면 여기에 작성
 };
 
-*/
+export { validateReview, validateReviewUpdate };

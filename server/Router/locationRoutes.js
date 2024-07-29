@@ -1,8 +1,8 @@
 import express from 'express';
 import dotenv from "dotenv";
 import { PrismaClient } from '@prisma/client';
-/* import { validateReview, validateReviewUpdate } from '../struct.js';
-import { protect } from '../middleware/authMiddleware.js'; */
+import { validateReview, validateReviewUpdate } from '../struct.js';
+import { protect } from '../middleware/authMiddleware.js'; 
 
 dotenv.config();
 
@@ -26,7 +26,7 @@ function asyncHandler(handler) {
     };
   }
 
-/*
+
 // id에 해당하는 장소 조회
 location.get('/locationsByName/:id', async (req, res) => {
     const { id } = req.params;
@@ -64,9 +64,8 @@ location.get('/locationsByName/:id', async (req, res) => {
     }
 });
 
-무슨 코드가 맞는건지 확인*/
 
-
+/*
 // id에 해당하는 장소 조회
 location.get('/detail/:id/', asyncHandler(async (req, res) => {
     const { id } = req.params;
@@ -81,11 +80,11 @@ location.get('/detail/:id/', asyncHandler(async (req, res) => {
         res.status(404).send({message:"Location not found."});
     }
   }));
-
+*/
 
 
 // 리뷰 생성
-location.post('/detail/:id/reviews', /* protect, */asyncHandler(async (req, res) => {
+location.post('/detail/:id/reviews',  /*protect, */ asyncHandler(async (req, res) => {
 // 리퀘스트 바디 내용으로 리뷰 생성
 //assert(req.body, CreateReview);
     validateReview(req.body);
@@ -130,7 +129,7 @@ location.post('/detail/:id/reviews', /* protect, */asyncHandler(async (req, res)
 
 
   //리뷰 수정 
-  location.patch('/detail/:id/reviews/:reviewId', /*protect, */ asyncHandler(async (req, res) => {
+  location.patch('/detail/:id/reviews/:reviewId', protect,  asyncHandler(async (req, res) => {
     validateReviewUpdate(req.body);
     const { reviewId } = req.params;
     const { userId, rating, comment } = req.body;
@@ -146,7 +145,7 @@ location.post('/detail/:id/reviews', /* protect, */asyncHandler(async (req, res)
   }));
 
 // 리뷰 삭제
-location.delete('/detail/:id/reviews/:reviewId', /*protect, */asyncHandler(async (req, res) => {
+location.delete('/detail/:id/reviews/:reviewId', protect, asyncHandler(async (req, res) => {
     const { reviewId } = req.params;
       await prisma.review.delete({
           where: {id: Number(reviewId)},

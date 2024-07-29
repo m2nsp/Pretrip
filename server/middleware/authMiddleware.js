@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User.js';
+import prisma from '../prismaClient.js';
 
 function asyncHandler(handler) {
     return async function (req, res){
@@ -24,7 +24,19 @@ const protect = asyncHandler (async (req, res, next)=>{
         try {
             token = req.headers.authorization.split(' ')[1];
             const decoded = jwt.verify(token, process.env.JWT_SECRET);
-            req.user = await User.findById(decoded.id).select('-password');
+            const user = await prisma.user.findUnique({
+                where: { kakaoId: decoded.kakaoId },
+                select: {
+                    kakaoId: true,
+                    email: true,
+                }
+            });
+            if (!user) {
+                res.status(401);
+                throw new Error('Not authorized, user not found');
+            }
+
+            req.user = user;
             next();
         } catch (error) {
             res.status(401);

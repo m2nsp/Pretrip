@@ -1,6 +1,6 @@
 import express from 'express';
 import router from "./Router/kakaoRoutes.js";
-import locationRouter from './Router/locationRoutes.js';
+import locationRoutes from './Router/locationRoutes.js';
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import { PrismaClient } from '@prisma/client';
@@ -17,7 +17,7 @@ app.use(express.json());
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use('/auth', router);
-app.use('/locations', locationRouter);
+app.use('/location', locationRoutes);
 
 app.get('/locations', async(req, res) => {
     //장소 목록 조회
