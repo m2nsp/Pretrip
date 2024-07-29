@@ -53,6 +53,23 @@ app.get('/locationsByName', async (req, res) => {
     }
 });
 
+app.get('/history/:email', async (req, res) => {
+    const { email } = req.params;
+
+    try{
+        const history = await prisma.history.findMany({
+            where: { userId : email },
+            include: { location : true },
+        });
+
+        res.send(history);
+    }catch(error){
+        console.error(error);
+        res.status(500).send({ error: 'An error occured while retrieving history' });
+    }
+});
+
+
 
 //사용자의 찜목록 조회
 app.get('/scraps/:email', async (req, res) => {

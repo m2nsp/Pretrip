@@ -52,18 +52,7 @@ DELETE http://localhost:3000/events/date/2024-08-15
 
 ### 특정 사용자가 장소 검색함
 GET http://localhost:3000/location/locationsByName/88a529a0-053d-4ed1-a140-26cc17d54e42
-
-
-###
-GET http://localhost:3000/location/locationsByName/88a529a0-053d-4ed1-a140-26cc17d54e42
-
-
-###
-GET http://localhost:3000/location/detail/88a529a0-053d-4ed1-a140-26cc17d54e42
-
-###
-POST http://localhost:3000/location/detail/88a529a0-053d-4ed1-a140-26cc17d54e42/reviews
-
+user-id: user1@example.com
 
 ### 리뷰생성
 POST http://localhost:3000/location/detail/88a529a0-053d-4ed1-a140-26cc17d54e42/reviews
@@ -87,3 +76,8 @@ Content-Type: application/json"
 
 ### 리뷰 삭제
 DELETE http://localhost:3000/location/detail/88a529a0-053d-4ed1-a140-26cc17d54e42/reviews/2
+
+
+
+### 사용자의 히스토리 조회
+GET http://localhost:3000/history/user1@example.com
