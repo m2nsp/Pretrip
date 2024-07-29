@@ -1,8 +1,11 @@
+
+
 document.addEventListener("DOMContentLoaded", function() {
-  const CLIENT_ID = '496e5a8d0967be9af01b356ae4ab29ab'; //REST API 키
-  const REDIRECT_URI = 'https://localhost:3000/auth/kakao/callback'; //리디렉션 URI
+  const CLIENT_ID = '496e5a8d0967be9af01b356ae4ab29ab'
+  const REDIRECT_URI = 'https://localhost:3000/auth/kakao/callback'
   
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`;
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code&scope=profile_nickname,account_email`
+
 
   const kakaoLoginLink = document.getElementById('kakao-login');
   if (kakaoLoginLink) {
