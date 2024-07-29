@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>PreTrip-Bookmark</title>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=M+Plus+1:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/recent.css">
+</head>
+<body>
+  <div class="sidebar">
+    <ul class="menu-items">
+      <li class="menu-item">
+        <p id="user"></p>
+        <img src="../static/recent_images/user.png" width="24" height="24">
+      </li>
+      <a href="../templates/bookmark.html" class="menu-item">
+        Bookmark
+        <img src="../static/recent_images/bookmark.png" width="24" height="24">
+      </a>
+      <a href="../templates/recent.html" class="menu-item active">
+        Recent History
+        <img src="../static/recent_images/recent.png" width="24" height="24">
+      </a>
+      <a href="../templates/login.html" class="menu-item">
+        Log out
+        <img src="../static/recent_images/logout.png" width="24" height="24">
+      </a>
+    </ul>
+  </div>
+
+  <main id="main-content">
+    <div id="history-container">
+      <div class="history-title">
+        <h1>Recent history</h1>
+        <p>최근 시청한 장소가 표시됩니다.</p>
+      </div>
+    </div>
+    <div id="loading" class="loading">Loading...</div>
+  </main>
+  <script src="../components/recent.js"></script>
+  <script src="../components/login.js"></script>
+</body>
+</html>
