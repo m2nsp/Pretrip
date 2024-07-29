@@ -129,23 +129,28 @@ location.post('/detail/:id/reviews',  /*protect, */ asyncHandler(async (req, res
 
 
   //리뷰 수정 
-  location.patch('/detail/:id/reviews/:reviewId', protect,  asyncHandler(async (req, res) => {
+  location.patch('/detail/:id/reviews/:reviewId', /*protect, */ asyncHandler(async (req, res) => {
     validateReviewUpdate(req.body);
     const { reviewId } = req.params;
-    const { userId, rating, comment } = req.body;
+    const { rating, comment } = req.body;
 
     const updateData = {};
     if(rating !== undefined) updateData.rating = rating;
     if(comment !== undefined) updateData.comment = comment;
-    const updatedReview = await prisma.review.update({
-        where: {id: Number(reviewId)},
+    try {
+      const updatedReview = await prisma.review.update({
+        where: { id: Number(reviewId) },
         data: updateData,
-    });
+      });
       res.send(updatedReview);
+    } catch (error) {
+      console.error('Error updating review:', error);
+      res.status(500).send({ message: 'Internal server error' });
+    }
   }));
 
 // 리뷰 삭제
-location.delete('/detail/:id/reviews/:reviewId', protect, asyncHandler(async (req, res) => {
+location.delete('/detail/:id/reviews/:reviewId', /*protect, */asyncHandler(async (req, res) => {
     const { reviewId } = req.params;
       await prisma.review.delete({
           where: {id: Number(reviewId)},

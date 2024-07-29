@@ -75,5 +75,15 @@ Content-Type: application/json
   "comment": "Great location!"
 }
 
+###리뷰수정
+PATCH http://localhost:3000/location/detail/88a529a0-053d-4ed1-a140-26cc17d54e42/reviews/3
+Content-Type: application/json"
+
+{
+    "rating": 5,
+    "comment": "Updated comment"
+}
+
 
 ### 리뷰 삭제
+DELETE http://localhost:3000/location/detail/88a529a0-053d-4ed1-a140-26cc17d54e42/reviews/2
