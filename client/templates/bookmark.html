@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>PreTrip - MyPage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=Noto+Sans+KR:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&family=M+PLUS+1p&family=Noto+Sans+KR:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../static/bookmark.css">
+</head>
+<body>
+  <div class="sidebar">
+    <ul class="menu-items">
+      <li class="menu-item">
+        <p id="user"></p>
+        <img src="../static/bookmark_images/user.png" width="24" height="24">
+      </li>
+      <a href="../templates/bookmark.html" class="menu-item active">
+        Bookmark
+        <img src="../static/bookmark_images/bookmark.png" width="24" height="24">
+      </a>
+      <a href="../templates/recent.html" class="menu-item">
+        Recent History
+        <img src="../static/bookmark_images/recent.png" width="24" height="24">
+      </a>
+      <a href="../templates/login.html" class="menu-item">
+        Log out
+        <img src="../static/bookmark_images/logout.png" width="24" height="24">
+      </a>
+    </ul>
+  </div>
+  
+  <main>
+    <div class="accordion">
+      <div class="accordion-title">
+        <h1>Bookmark</h1>
+        <p>저장한 장소가 표시됩니다.</p>
+      </div>
+      <button class="accordion-toggle">부산<img src="../static/bookmark_images/up.png" width="24px" height="24px"></button>
+      <div class="accordion-content-none">
+          <p>아직 북마크한 장소가 없습니다.</p>
+      </div>
+    </div>
+    <div class="accordion">
+      <button class="accordion-toggle">양양<img src="../static/bookmark_images/up.png" width="24px" height="24px"></button>
+      <div class="accordion-content-none">
+          <p>아직 북마크한 장소가 없습니다.</p>
+      </div>
+    </div>
+    <div class="accordion">
+      <button class="accordion-toggle">제주도<img src="../static/bookmark_images/up.png" width="24px" height="24px"></button>
+      <div class="accordion-content">
+        <div class="place-preview">
+          <a href="https://place.map.kakao.com/8159415" target="_blank" class="preview-link">
+            <img src="https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F645a3c0e3233f93fe0743b44b0cccd45e84b5cf9%3Foriginal" 
+            width="200px" height="100px" class="preview-image">
+          </a>
+          <span class="place-info">
+            <div class="place-bookmarked">
+              <p class="place-name">협재 해수욕장</p>
+              <div class="star-rating">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="1">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="2">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="3">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="4">
+                <img src="../static/bookmark_images/empty_star.png" class="star" data-value="5">
+              </div>
+            </div>
+            <p class="address">제주 제주시 한림읍 협재리
+              <img src="../static/bookmark_images/bookmark_filled.png" width="24px" height="24px"> 
+            </p>
+          </span>
+        </div>
+        <div class="place-preview">
+          <a href="https://place.map.kakao.com/25022153" target="_blank" class="preview-link">
+            <img src="https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2F9b01c7f9cfa7f63ca03625353928de7356e50e38%3Foriginal" 
+            width="200px" height="100px" class="preview-image">
+          </a>
+          <span class="place-info">
+            <div class="place-bookmarked">
+              <p class="place-name">곽지 해수욕장</p>
+              <div class="star-rating">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="1">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="2">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="3">
+                <img src="../static/bookmark_images/empty_star.png" class="star" data-value="4">
+                <img src="../static/bookmark_images/empty_star.png" class="star" data-value="5">
+              </div>
+            </div>
+            <p class="address">제주 제주시 애월읍 곽지리
+              <img src="../static/bookmark_images/bookmark_filled.png" width="24px" height="24px"> 
+            </p>
+          </span>
+        </div>
+        <div class="place-preview">
+          <a href="https://place.map.kakao.com/26972307" target="_blank" class="preview-link">
+            <img src="https://img1.kakaocdn.net/cthumb/local/R0x420.q50/?fname=http%3A%2F%2Ft1.daumcdn.net%2Flocal%2FkakaomapPhoto%2Freview%2Fa468467953bae27bf739d315c1d3ac3bb7a6db59%3Foriginal" 
+            width="200px" height="100px" class="preview-image">
+          </a>
+          <span class="place-info">
+            <div class="place-bookmarked">
+              <p class="place-name">화순 곶자왈</p>
+              <div class="star-rating">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="1">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="2">
+                <img src="../static/bookmark_images/filled_star.png" class="star" data-value="3">
+                <img src="../static/bookmark_images/empty_star.png" class="star" data-value="4">
+                <img src="../static/bookmark_images/empty_star.png" class="star" data-value="5">
+              </div>
+            </div>
+            <p class="address">제주 서귀포시 안덕면 화순리
+              <img src="../static/bookmark_images/bookmark_filled.png" width="24px" height="24px"> 
+            </p>
+          </span>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="../components/bookmark.js"></script>
+</body>
+</html>
