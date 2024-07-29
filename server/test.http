@@ -15,7 +15,7 @@ POST http://localhost:3000/scraps/user1@example.com
 Content-Type: application/json
 
 {
-    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+    "locationId": "88a529a0-053d-4ed1-a140-26cc17d54e42"
 }
 
 ###특정 사용자가 찜 삭제하기
@@ -23,7 +23,7 @@ DELETE http://localhost:3000/scraps/user1@example.com
 Content-Type: application/json
 
 {
-    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+    "locationId": "88a529a0-053d-4ed1-a140-26cc17d54e42"
 }
 
 ###특정 사용자의 일정조회하기
@@ -36,8 +36,8 @@ Content-Type: application/json
 
 {
     "eventCreatorId": "user1@example.com",
-    "eventDate": "2024-08-16T10:00:00Z",
-    "locationId": "0188fc65-283b-4ca1-bb8d-d2824a171c45"
+    "eventDate": "2024-08-15T10:00:00Z",
+    "locationId": "88a529a0-053d-4ed1-a140-26cc17d54e42"
 }
 
 
@@ -48,3 +48,18 @@ DELETE http://localhost:3000/events/d95a47d9-9692-419b-99a5-b972c0ee5e19/locatio
 ###특정 사용자의 특정 일정을 삭제하기
 DELETE http://localhost:3000/events/date/2024-08-15
 
+
+
+### 특정 사용자가 장소 검색함
+GET http://localhost:3000/locationsByName/88a529a0-053d-4ed1-a140-26cc17d54e42
+
+
+###
+GET http://localhost:3000/locationsByName/88a529a0-053d-4ed1-a140-26cc17d54e42
+
+
+###
+GET http://localhost:3000/detail/88a529a0-053d-4ed1-a140-26cc17d54e42
+
+###
+POST http://localhost:3000/detail/88a529a0-053d-4ed1-a140-26cc17d54e42/reviews

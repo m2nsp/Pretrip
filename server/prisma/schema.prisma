@@ -21,6 +21,8 @@ model User{
   scraps     Scrap[]
   events     Event[]
   history    History[]
+
+  reviews    Review[] @relation("UserReviews")
 }
 
 
@@ -34,6 +36,9 @@ model Location{
   scraps    Scrap[]
   events    EventLocation[]
   history   History[]
+
+  reviews       Review[] @relation("LocationReviews")
+  averageRating Float?   @default(0)
 }
 
 model Scrap{
@@ -74,6 +79,18 @@ model History {
   @@unique([userId, locationId, searchedAt]) // Optional: ensures unique entries per timestamp
 }
 
+model Review{
+  id          Int   @id @default(autoincrement())
+  locationId  String
+  userId      String
+  userName    String
+  rating      Int     //@check(rating >= 1 && rating <= 5)
+  comment     String
+  createdAt   DateTime    @default(now())
+
+  location    Location    @relation("LocationReviews", fields: [locationId], references: [id], onDelete: Cascade)
+  user        User        @relation("UserReviews", fields: [userId], references: [email])
+}
 
 enum Category{
   TOUR
